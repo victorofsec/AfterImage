@@ -4,6 +4,26 @@ Afterimage is a Flask application for sharing an image through a short, single-v
 
 The interface automatically supports English and French using the browser's `Accept-Language` preference, with a persistent manual language selector.
 
+## Screenshots
+
+### Desktop upload screen
+
+<p align="center">
+  <img src="docs/screenshots/home-desktop.png" alt="Afterimage desktop upload interface" width="900">
+</p>
+
+### Viewer pledge
+
+<p align="center">
+  <img src="docs/screenshots/viewer-pledge.png" alt="Afterimage single-view pledge screen" width="900">
+</p>
+
+### Mobile layout
+
+<p align="center">
+  <img src="docs/screenshots/home-mobile.png" alt="Afterimage mobile upload interface" width="320">
+</p>
+
 ## Features
 
 - One viewing session per image and HMAC-hashed IP address
