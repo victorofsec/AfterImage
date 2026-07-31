@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ t.stats_title }}{% endblock %}
+{% block body_class %}page-shell{% endblock %}
+{% block body %}
+<main class="stats-wrap">
+  <div class="brand"><span class="brand-mark"></span>{{ t.brand }}</div>
+  <h1>{{ t.shared_images }}</h1>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>{{ t.file }}</th><th>{{ t.duration }}</th><th>{{ t.fragments }}</th><th>{{ t.views }}</th><th>{{ t.created }}</th></tr></thead>
+      <tbody>
+      {% for image in images %}
+        <tr><td><code>{{ image[0] }}</code></td><td>{{ image[1] }}</td><td>{{ image[2] }} ms</td><td>{{ image[3] }}</td><td>{{ image[5] }}</td><td>{{ image[4] }}</td></tr>
+      {% else %}
+        <tr><td colspan="6">{{ t.no_images }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

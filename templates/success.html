@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ t.link_ready_title }}{% endblock %}
+{% block body_class %}centered-page{% endblock %}
+{% block body %}
+<main class="card result-card">
+  <div class="status-icon success">✓</div>
+  <p class="eyebrow">{{ t.link_generated }}</p>
+  <h1>{{ t.ready_to_vanish }}</h1>
+  <p class="muted">{{ t.share_instructions }}</p>
+  <a class="share-link" href="{{ link }}">{{ link }}</a>
+  <div class="button-row">
+    <a class="primary-button" href="{{ link }}">{{ t.open_link }} <span aria-hidden="true">↗</span></a>
+    <a class="text-link" href="{{ url_for('index') }}">{{ t.create_another }}</a>
+  </div>
+</main>
+{% endblock %}

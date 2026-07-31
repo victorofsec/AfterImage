@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{% block title %}{{ t.site_title }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <nav class="language-switcher" aria-label="{{ t.language }}">
+    <a href="{{ url_for('set_language', language='fr', next=language_next) }}"{% if lang == 'fr' %} aria-current="true"{% endif %}>FR</a>
+    <span>/</span>
+    <a href="{{ url_for('set_language', language='en', next=language_next) }}"{% if lang == 'en' %} aria-current="true"{% endif %}>EN</a>
+  </nav>
+  {% block body %}{% endblock %}
+</body>
+</html>

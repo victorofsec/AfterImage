@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}{{ t.viewer_title }}{% endblock %}
+{% block head %}<script src="{{ url_for('static', filename='js/viewer.js') }}" defer></script>{% endblock %}
+{% block body_class %}viewer-page{% endblock %}
+{% block body %}
+<main
+  id="viewer"
+  class="viewer"
+  data-session-url="{{ session_url }}"
+  data-duration="{{ duration_ms }}"
+  data-slices="{{ slice_count }}"
+  data-opening="{{ t.opening }}"
+  data-already-seen="{{ t.already_seen_message }}"
+  data-session-failed="{{ t.session_failed }}"
+  data-time-expired="{{ t.time_expired }}"
+  data-page-hidden="{{ t.page_hidden }}"
+  data-window-blurred="{{ t.window_blurred }}"
+  data-destroyed="{{ t.destroyed }}"
+  data-preparing="{{ t.preparing }}"
+  data-frame="{{ t.frame }}"
+  data-fragment="{{ t.fragment }}"
+  data-fragments="{{ t.fragments|lower }}"
+>
+  <section id="gate" class="viewer-gate">
+    <div class="brand viewer-brand"><span class="brand-mark"></span>{{ t.brand }}</div>
+    <div class="aperture" aria-hidden="true"><span></span></div>
+    <p class="eyebrow">{{ t.single_view_grid.format(count=slice_count) }}</p>
+    <h1>{{ t.viewer_heading }}</h1>
+    <p>{{ t.viewer_warning }}</p>
+    <label class="pledge">
+      <input id="pledgeCheckbox" type="checkbox">
+      <span class="pledge-check" aria-hidden="true">✓</span>
+      <span>{{ t.pledge }}</span>
+    </label>
+    <button id="revealButton" class="primary-button danger" type="button" disabled>{{ t.accept_reveal.format(seconds='%.1f'|format(duration_ms / 1000)) }}</button>
+  </section>
+
+  <section id="stage" class="viewer-stage" hidden aria-live="polite">
+    <div class="scan-header">
+      <span class="live-dot"></span>
+      <span>{{ t.transmission_active }}</span>
+      <span id="countdown" class="countdown">—</span>
+    </div>
+    <div class="canvas-frame"><canvas id="imageCanvas"></canvas><div class="scanline"></div></div>
+    <div class="fragment-progress"><span id="progressBar"></span></div>
+    <p id="fragmentLabel">{{ t.secure_loading }}</p>
+  </section>
+
+  <section id="ended" class="viewer-ended" hidden>
+    <div class="status-icon">×</div>
+    <p class="eyebrow">{{ t.session_ended }}</p>
+    <h1>{{ t.unavailable_heading }}</h1>
+    <p id="endMessage">{{ t.fragments_erased }}</p>
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ t.site_title }}{% endblock %}
+{% block head %}<script src="{{ url_for('static', filename='js/upload.js') }}" defer></script>{% endblock %}
+{% block body_class %}page-shell{% endblock %}
+{% block body %}
+<main class="layout">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="brand"><span class="brand-mark"></span>{{ t.brand }}</div>
+    <p class="eyebrow">{{ t.eyebrow }}</p>
+    <h1 id="page-title">{{ t.hero_line_1 }}<br><span>{{ t.hero_line_2 }}</span></h1>
+    <p class="lead">{{ t.hero_text }}</p>
+    <div class="feature-row" aria-label="Fonctionnalités">
+      <span>{{ t.feature_ip }}</span><span>{{ t.feature_cache }}</span><span>{{ t.feature_grid }}</span>
+    </div>
+  </section>
+
+  <section class="card upload-card" aria-labelledby="upload-title">
+    <div class="card-number">01</div>
+    <h2 id="upload-title">{{ t.create_link }}</h2>
+    <p class="muted">{{ t.formats }}</p>
+    <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+      <label id="dropZone" class="drop-zone">
+        <input type="file" name="image" accept="image/png,image/jpeg,image/gif" required>
+        <span class="drop-icon" aria-hidden="true">＋</span>
+        <span id="fileName" class="drop-title">{{ t.choose_image }}</span>
+        <span class="drop-help">{{ t.drop_image }}</span>
+      </label>
+
+      <div class="field-grid">
+        <label class="field">
+          <span>{{ t.duration }}</span>
+          <span class="input-suffix"><input type="number" name="duration_ms" value="5000" min="2000" max="300000" step="500" required><b>ms</b></span>
+        </label>
+        <fieldset class="field segment-field">
+          <legend>{{ t.slicing }}</legend>
+          <div class="segment-control">
+            <label><input type="radio" name="slice_count" value="30"><span>30</span></label>
+            <label><input type="radio" name="slice_count" value="60" checked><span>60</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="primary-button" type="submit"><span>{{ t.generate }}</span><span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="fine-print">{{ t.technique_warning }}</p>
+  </section>
+</main>
+{% endblock %}

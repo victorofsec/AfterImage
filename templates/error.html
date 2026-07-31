@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ t.error_title }}{% endblock %}
+{% block body_class %}centered-page{% endblock %}
+{% block body %}
+<main class="card result-card">
+  <div class="status-icon">!</div>
+  <p class="eyebrow">{{ t.cannot_continue }}</p>
+  <h1>{{ message }}</h1>
+  <a class="primary-button" href="{{ url_for('index') }}">{{ t.back_home }}</a>
+</main>
+{% endblock %}

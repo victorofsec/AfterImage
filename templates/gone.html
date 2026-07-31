@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ t.already_viewed_title }}{% endblock %}
+{% block body_class %}centered-page{% endblock %}
+{% block body %}
+<main class="card result-card">
+  <div class="status-icon">×</div>
+  <p class="eyebrow">{{ t.access_denied }}</p>
+  <h1>{{ t.already_viewed }}</h1>
+  <p class="muted">{{ t.already_viewed_text }}</p>
+</main>
+{% endblock %}
