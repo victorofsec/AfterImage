@@ -51,7 +51,7 @@ This application makes casual screenshots and direct downloads harder; it cannot
 
 ```bash
 git clone <your-repository-url>
-cd limitScreenshot
+cd AfterImage
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
